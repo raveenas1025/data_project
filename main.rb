@@ -1083,6 +1083,23 @@ school_attendance_data = JSON.parse(%q|
 
 # run(violation_data)
 #same
-def find(district)
-
+def school_data(districts, districtnum)
+   districts["data"].each do |district|
+      if district[8] == districtnum
+         return {district_string: district[8], attendance_string: district[9], population_string: district[10]}
+         break
+      end
+   end
 end
+#puts school_data(districtdata, "04")
+def run(districts)
+puts"what district number?"
+user_input = gets.chomp
+user_input = user_input.to_i < 10 ? "0#{user_input}" : user_input
+
+district_info = school_data(districts, user_input)
+puts district_info[:district_string]
+puts "The district's attendance percentage was #{district_info[attendance_string]}."
+puts "The population of this district is #{district_info[population_string]}."
+end
+run(school_attendance_data)
