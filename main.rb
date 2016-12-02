@@ -1058,31 +1058,6 @@ school_attendance_data = JSON.parse(%q|
 |)
 
 #8-district 9-attendance% 10-population
-
-
-# #mueller's
-# def violation_num_to_info(violations,code_num)
-#  violations["data"].each do |violation|
-#     if violation[8] == code_num
-#       return {violation_string: violation[9], fine_manhattan: violation[10], fine_other: violation[11]}
-#       break
-#     end
-#  end
-# end
-# # puts violation_num_to_info(violation_data,"13")
-
-# def run(violations)
-#  puts "What is the violation code?"
-#  user_code_num = gets.chomp
-  
-#  violation_info = violation_num_to_info(violations,user_code_num)
-#  puts violation_info[:violation_string]
-#  puts "Costs #{violation_info[:fine_manhattan]}in Manhattan 96th St and below."
-#  puts "Costs #{violation_info[:fine_other]}everywhere else."
-# end
-
-# run(violation_data)
-#same
 def school_data(districts, districtnum)
    districts["data"].each do |district|
       if district[8] == "DISTRICT " + districtnum
