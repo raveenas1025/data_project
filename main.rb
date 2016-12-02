@@ -1057,12 +1057,15 @@ school_attendance_data = JSON.parse(%q|
 
 |)
 
-#8-district 9-attendance% 10-population
-def school_data(districts, districtnum)
+
+#creates method that looks through all districts and looks for specific array position
+def school_data(districts, districtnum) 
    districts["data"].each do |district|
-      if district[8] == "DISTRICT " + districtnum
+      #8 signals the string that holds district # in the array
+      #concatenates the word district with the number user plugs in
+      if district[8] == "DISTRICT " + districtnum 
+         #8-district 9-attendance% 10-population
          return {district_string: district[8], attendance_string: district[9], population_string: district[10]}
-        
       end
    end
 end
@@ -1070,9 +1073,12 @@ end
 def run(districts)
    puts "what district number?"
    user_input = gets.chomp
+   #adds a zero infront of the user # if it is lower than 10
    user_input = user_input.to_i < 10 ? "0#{user_input}" : user_input
    
+   #runs school_data
    district_info = school_data(districts, user_input)
+   #puts gathered information user wanted into terminal after concatenated into a sentence
    puts district_info[:district_string]
    puts "The district's attendance percentage was #{district_info[:attendance_string]}."
    puts "The population of this district is #{district_info[:population_string]}."
